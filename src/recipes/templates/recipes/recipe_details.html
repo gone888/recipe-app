@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <title>Recipe Details</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("{% static 'recipes/images/recipes.jpg' %}") no-repeat
+          center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+      }
+      .content {
+        background-color: rgba(0, 0, 0, 0.75);
+        padding: 30px;
+        border-radius: 10px;
+      }
+      img {
+        margin-top: 15px;
+        border-radius: 8px;
+      }
+      b {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h2>{{ object.name }}</h2>
+      <p><b>Ingredients:</b> {{ object.ingredients }}</p>
+      <p><b>Cooking Time:</b> {{ object.cooking_time }}</p>
+      <p><b>Difficulty:</b> {{ object.difficulty }}</p>
+      <img src="{{ object.pic.url }}" width="220" height="220" />
+    </div>
+  </body>
+</html>
