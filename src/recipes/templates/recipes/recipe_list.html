@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <title>Recipe List</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("{% static 'recipes/images/recipes.jpg' %}") no-repeat
+          center center fixed;
+        background-size: cover;
+        font-family: sans-serif;
+        color: white;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      table {
+        margin: 40px auto;
+        background-color: rgba(0, 0, 0, 0.75);
+        border-collapse: collapse;
+        color: white;
+      }
+      td,
+      th {
+        padding: 20px 50px;
+        text-align: center;
+      }
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      a:hover {
+        transition: color 0.3s ease;
+        background-color: rgb(105, 105, 105);
+      }
+      .logout-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background-color: rgb(160, 160, 160);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .logout-btn:hover {
+        background-color: rgb(105, 105, 105);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    <h1>Recipe List:</h1>
+    <table border="1" cellpadding="5" cellspacing="5">
+      <tr>
+        <td>Name</td>
+        <td>Image</td>
+      </tr>
+      {% for object in object_list %}
+      <tr>
+        <td><a href="{{ object.get_absolute_url }}">{{ object.name }}</a></td>
+        <td><img src="{{ object.pic.url }}" width="220" height="220" /></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

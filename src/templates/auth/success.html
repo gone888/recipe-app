@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <title>You've Successfully Logged Out!</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("{% static 'recipes/images/recipes.jpg' %}") no-repeat
+          center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+      }
+      h1 {
+        margin-bottom: 30px;
+        font-size: 2em;
+      }
+      .login-container {
+        background-color: rgba(0, 0, 0, 0.75);
+        padding: 40px;
+        border-radius: 12px;
+        text-align: center;
+        min-width: 320px;
+      }
+      .login-button {
+        background-color: rgb(160, 160, 160);
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 28px;
+        font-size: 1em;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+      .login-button:hover {
+        background-color: rgb(105, 105, 105);
+        transform: scale(1.05);
+      }
+      .error {
+        color: #ff4d4d;
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>You've Successfully Logged Out!</h1>
+      {% if error_message %}
+      <div class="error">{{ error_message }}</div>
+      {% endif %}
+      <a href="{% url 'login' %}" class="login-button">Login</a>
+    </div>
+  </body>
+</html>

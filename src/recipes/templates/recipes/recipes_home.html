@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <title>Recipes App Home</title>
+    <style>
+      body {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        justify-content: center;
+        background: url("{% static 'recipes/images/recipes.jpg' %}") no-repeat
+          center center fixed;
+        background-size: cover;
+        height: 100vh;
+        align-items: center;
+        color: white;
+        font-family: sans-serif;
+      }
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      .login-btn {
+        background-color: rgb(160, 160, 160);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        transition: background-color 0.3s ease;
+      }
+      .login-btn:hover {
+        background-color: rgb(105, 105, 105);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Recipes App Homepage!</h1>
+    <a href="{% url 'login' %}" class="login-btn">Login</a>
+  </body>
+</html>

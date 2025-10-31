@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  {% load static %}
+  <head>
+    <title>Login</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: url("{% static 'recipes/images/recipes.jpg' %}") no-repeat
+          center center fixed;
+        background-size: cover;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+      }
+      .login-container {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        min-width: 300px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      .error {
+        color: #ff4d4d;
+        margin-bottom: 15px;
+      }
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: rgb(160, 160, 160);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background-color: rgb(105, 105, 105);
+      }
+      input {
+        padding: 10px;
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: none;
+      }
+      label {
+        float: left;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Login</h1>
+      {% if error_message %}
+      <div class="error">{{ error_message }}</div>
+      {% endif %}
+      <form action="" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </body>
+</html>
