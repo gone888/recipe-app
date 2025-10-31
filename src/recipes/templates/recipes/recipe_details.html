@@ -38,6 +38,7 @@
       <p><b>Ingredients:</b> {{ object.ingredients }}</p>
       <p><b>Cooking Time:</b> {{ object.cooking_time }}</p>
       <p><b>Difficulty:</b> {{ object.difficulty }}</p>
+      <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
       <img src="{{ object.pic.url }}" width="220" height="220" />
     </div>
   </body>

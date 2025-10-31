@@ -13,11 +13,10 @@ def login_view(request):
         if form.is_valid():
             username = form.cleaned_data.get("username")
             password = form.cleaned_data.get("password")
-
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect("recipes:list")
+                return redirect("recipes:home")
             else:
                 error_message = "ooops.. somerthing went wrong"
 

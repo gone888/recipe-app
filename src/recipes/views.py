@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
-from .forms import RecipeSearchForm
+from .forms import RecipeSearchForm, RecipeForm
 import pandas as pd
 from .utils import get_chart, get_recipename_from_id
 
@@ -31,6 +31,20 @@ def recipe_search(request):
     'chart': chart,
   }
   return render(request, 'recipes/recipe_search.html', context)
+
+def add_recipe(request):
+  if request.method == 'POST':
+    form = RecipeForm(request.POST, request.FILES)
+    if form.is_valid():
+      form.save()
+      return redirect('recipes:home')  # Redirect to a page where recipes are listed
+  else:
+    form = RecipeForm()
+    
+  return render(request, 'recipes/add_recipe.html', {'form': form})
+
+def about_me(request):
+  return render(request, 'recipes/about_me.html')
 
 class RecipeListView(LoginRequiredMixin, ListView):
   model = Recipe
