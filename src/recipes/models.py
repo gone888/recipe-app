@@ -24,9 +24,12 @@ class Recipe(models.Model):
     elif self.cooking_time >= 10 and num_ingredients >= 4:
       return "Hard"
 
+<<<<<<< HEAD
   def get_absolute_url(self):
     return reverse ("recipes:detail", kwargs={"pk": self.pk})
 
+=======
+>>>>>>> a6f8d9918acefca0ce0ea7ef0ac98dcc43889b50
   def save(self, *args, **kwargs):
     self.difficulty = self.calculate_difficulty()
     super().save(*args, **kwargs)
