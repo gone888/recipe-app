@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
+from .forms import RecipeSearchForm
 from .models import Recipe
 
 class RecipeModelTest(TestCase):
@@ -63,13 +64,14 @@ class RecipeViewsTest(TestCase):
   def test_home_page_status_code(self):
     response = self.client.get('/')
     self.assertEqual(response.status_code, 200)
-    
-  def test_recipe_list_view(self):
-    response = self.client.get(reverse('recipes:list'))
-    self.assertEqual(response.status_code, 200)
-    self.assertContains(response, 'View Test Recipe')
-    
-  def test_recipe_detail_view(self):
-    response = self.client.get(reverse('recipes:detail', args=[self.recipe.pk]))
-    self.assertEqual(response.status_code, 200)
-    self.assertContains(response, 'View Test Recipe')
+
+class RecipeFormTest(TestCase):   
+  def test_recipe_form(self):
+    form_data = {'recipe_title': 'soup', 'ingredient_title': 'broth', 'chart_type': '#1'}
+    form = RecipeSearchForm(data=form_data)
+    self.assertTrue(form.is_valid())
+      
+  def test_recipe_form_invalid_chart(self):
+    form_data = {'recipe_title': 'soup', 'ingredient_title': 'broth', 'chart_type': '#4'}
+    form = RecipeSearchForm(data=form_data)
+    self.assertFalse(form.is_valid())

@@ -2,10 +2,35 @@ from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Recipe
+from .forms import RecipeSearchForm
+import pandas as pd
+from .utils import get_chart, get_recipename_from_id
 
 # Create your views here.
 def home(request):
   return render(request, "recipes/recipes_home.html")
+
+def recipe_search(request):
+  form = RecipeSearchForm(request.POST or None)
+  recipe_df = None
+  chart = None
+
+  if request.method == 'POST':
+    recipe_title = request.POST.get('recipe_title')
+    chart_type = request.POST.get('chart_type')
+    qs = Recipe.objects.filter(name=recipe_title)
+    if qs:
+      recipe_df = pd.DataFrame(qs.values())
+      recipe_df['id'] = recipe_df['id'].apply(get_recipename_from_id)
+      chart = get_chart(chart_type, recipe_df, labels=recipe_df['difficulty'].values)
+      recipe_df = recipe_df.to_html()
+
+  context = {
+    'form': form,
+    'recipe_df': recipe_df,
+    'chart': chart,
+  }
+  return render(request, 'recipes/recipe_search.html', context)
 
 class RecipeListView(LoginRequiredMixin, ListView):
   model = Recipe
