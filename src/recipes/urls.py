@@ -1,11 +1,11 @@
 from django.urls import path
-from .views import home, RecipeListView, RecipeDetailView, recipe_search, add_recipe, about_me
+from .views import home, RecipeListView, RecipeDetailView, recipe_search, add_recipe, about_me, get_queryset
 
 app_name = "recipes"
 
 urlpatterns = [
-  path('homescreen', home, name='home'),
-  path("search/", recipe_search, name="search"),
+  path("", home, name="home"),
+  path('search/', get_queryset, name="search"),
   path("add/", add_recipe, name="add"),
   path("about/", about_me, name="about"),
   path("list/", RecipeListView.as_view(), name="list"),
