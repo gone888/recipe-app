@@ -79,11 +79,28 @@
         display: flex;
         justify-content: center;
       }
+      .home-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background-color: rgb(160, 160, 160);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      .home-btn:hover {
+        background-color: rgb(105, 105, 105);
+      }
     </style>
   </head>
-
   <body>
-    <h1><a href="{% url 'recipes:list' %}">Search Recipe App</a></h1>
+    <a href="{% url 'recipes:home' %}" class="home-btn">Home</a>
+    <h1>Search Recipe App</h1>
     <div class="container">
       <div class="search_card">
         <form action="" method="POST">

@@ -30,7 +30,7 @@
       b {
         color: white;
       }
-      .home-btn {
+      .list-btn {
         position: absolute;
         top: 20px;
         right: 30px;
@@ -44,13 +44,13 @@
         text-decoration: none;
         transition: background-color 0.3s ease;
       }
-      .home-btn:hover {
+      .list-btn:hover {
         background-color: rgb(105, 105, 105);
       }
     </style>
   </head>
   <body>
-    <a href="{% url 'recipes:home' %}" class="home-btn">Home</a>
+    <a href="{% url 'recipes:list' %}" class="list-btn">Recipes list</a>
     <div class="content">
       <h2>{{ object.name }}</h2>
       <p><b>Ingredients:</b> {{ object.ingredients }}</p>

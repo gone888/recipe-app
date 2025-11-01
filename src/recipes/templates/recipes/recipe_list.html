@@ -36,7 +36,7 @@
         transition: color 0.3s ease;
         background-color: rgb(105, 105, 105);
       }
-      .logout-btn {
+      .home-btn {
         position: absolute;
         top: 20px;
         right: 30px;
@@ -50,7 +50,7 @@
         text-decoration: none;
         transition: background-color 0.3s ease;
       }
-      .logout-btn:hover {
+      .home-btn:hover {
         background-color: rgb(105, 105, 105);
       }
       .search-btn {
@@ -71,7 +71,7 @@
     </style>
   </head>
   <body>
-    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    <a href="{% url 'recipes:home' %}" class="home-btn">Home</a>
     <h1>Recipe List:</h1>
     <table border="1" cellpadding="5" cellspacing="5">
       <tr>

@@ -43,9 +43,27 @@
         text-align: center;
         margin-top: 40px;
       }
+      .home-btn {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background-color: rgb(160, 160, 160);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1em;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+      .home-btn:hover {
+        background-color: rgb(105, 105, 105);
+      }
     </style>
   </head>
   <body>
+    <a href="{% url 'recipes:home' %}" class="home-btn">Home</a>
     <div class="container">
       <h1>About Me</h1>
       <div class="about-section">
