@@ -36,12 +36,6 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-#Database
-*.sqlite3
-
-# Text backup files
-*.bak
-
 # Unit test / coverage reports
 htmlcov/
 .tox/
@@ -179,9 +173,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Cursor  
-#  Cursor is an AI-powered code editor.`.cursorignore` specifies files/directories to 
-#  exclude from AI features like autocomplete and code analysis. Recommended for sensitive data
-#  refer to https://docs.cursor.com/context/ignore-files
-.cursorignore
-.cursorindexingignore
+# Text Backup files
+*.bak
+
+#Database
+*.sqlite3
