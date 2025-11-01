@@ -7,7 +7,7 @@ class Recipe(models.Model):
   name = models.CharField(max_length=50)
   ingredients = models.TextField()
   cooking_time = models.IntegerField()
-  pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
+  pic = models.ImageField(upload_to='recipes', default='No_image_available.png')
   difficulty = models.CharField(max_length=20, blank=True, null=True)
 
   def return_ingredients_as_list(self):
