@@ -58,4 +58,4 @@ class RecipeListView(LoginRequiredMixin, ListView):
 
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
-    template_name = 'recipes/recipe_detail.html'
+    template_name = 'recipes/recipe_details.html'
